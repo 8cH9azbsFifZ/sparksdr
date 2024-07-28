@@ -1,6 +1,11 @@
 FROM debian:latest
 
+RUN apt-get -y update
+RUN apt-get -y install curl
+
 ARG TARGETPLATFORM
-RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=amd64; elif [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then ARCHITECTURE=arm; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=aarch64; else ARCHITECTURE=amd64; fi \
-    && curl -sS -L -O --output-dir /tmp/ --create-dirs "https://github.com/just-containers/s6-overlay/releases/download/v${S6_OVERLAY_VERSION}/s6-overlay-${ARCHITECTURE}.tar.gz" \
-    && tar xzf "/tmp/s6-overlay-${ARCHITECTURE}.tar.gz" -C /
+RUN if [ "$TARGETPLATFORM" = "linux/amd64" ]; then ARCHITECTURE=x64; elif [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then ARCHITECTURE=arm; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=arm64; else ARCHITECTURE=x64; fi \
+    && curl -sS -L -O --output-dir /tmp/ "https://www.sparksdr.com/download/SparkSDR.2.0.33.linux-${ARCHITECTURE}.deb" \
+    && apt-get -y install "/tmp/SparkSDR.2.0.33.linux-${ARCHITECTURE}.deb" 
+
+#https://www.sparksdr.com/download/SparkSDR.2.0.33.linux-x64.deb
