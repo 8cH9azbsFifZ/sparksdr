@@ -1,8 +1,8 @@
 version: '2'
 services:
   ide:
-    image: psharkey/intellij:latest
-#    image: psharkey/netbeans-8.1:latest
+    image: sparksdr:latest
+    command: bash -c "sleep 7 ; DISPLAY=novnc:0.0 /usr/local/bin/SparkSDR"
     environment:
       - DISPLAY=novnc:0.0
     depends_on:
