@@ -1,7 +1,7 @@
 version: '2'
 services:
   ide:
-    image: sparksdr:latest
+    image: ghcr.io/8ch9azbsfifz/sparksdr:latest
     command: bash -c "sleep 7 ; DISPLAY=novnc:0.0 /usr/local/bin/SparkSDR"
     environment:
       - DISPLAY=novnc:0.0
