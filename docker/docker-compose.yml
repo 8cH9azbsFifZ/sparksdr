@@ -10,7 +10,7 @@ services:
     networks:
       - x11
   novnc:
-    image: theasp/novnc:latest
+    image: ghcr.io/8ch9azbsfifz/docker-novnc-single:latest
     environment:
       # Adjust to your screen size
       - DISPLAY_WIDTH=1600
